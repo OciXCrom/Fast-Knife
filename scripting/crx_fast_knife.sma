@@ -1,7 +1,7 @@
 #include <amxmodx>
 #include <fun>
 
-#define PLUGIN_VERSION "1.0"
+#define PLUGIN_VERSION "1.0.1"
 new g_pSpeed
 
 public plugin_init()
@@ -13,4 +13,9 @@ public plugin_init()
 }
 
 public OnSelectKnife(id)
-	set_user_maxspeed(id, get_user_maxspeed(id) + get_pcvar_float(g_pSpeed))
+{
+	if(is_user_alive(id))
+	{
+		set_user_maxspeed(id, get_user_maxspeed(id) + get_pcvar_float(g_pSpeed))
+	}
+}
